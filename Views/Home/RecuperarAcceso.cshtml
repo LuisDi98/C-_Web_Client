@@ -1,0 +1,48 @@
+﻿@model JN_WEB.Entities.Usuario
+
+@{
+    ViewData["Title"] = "Inicio Sesión";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="login-box">
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Recuperar Acceso</p>
+
+            @if (ViewBag.msj != null)
+            {
+                <div class="alert alert-secondary" style="text-align:center" role="alert">
+                    @ViewBag.msj
+                </div>
+            }
+
+            @using (Html.BeginForm("RecuperarAcceso", "Home"))
+            {
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.Identificacion, new { @class = "form-control", @placeholder = "Identificación" })
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8">
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Procesar</button>
+                    </div>
+                </div>
+            }
+
+            <p class="mb-1">
+                <a href="@Url.Action("Index","Home")" class="text-center">Quiero iniciar sesión</a>
+            </p>
+            <p class="mb-0">
+                <a href="@Url.Action("RegistrarUsuario","Home")" class="text-center">Quiero registrarme</a>
+            </p>
+        </div>
+    </div>
+</div>
